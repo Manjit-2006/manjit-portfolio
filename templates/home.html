@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+        }
+
+        .logo a {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        main.content {
+            padding: 3rem 2rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 2rem auto;
+            border-radius: 15px;
+            max-width: 900px;
+            backdrop-filter: blur(10px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #eee;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        .typed-text {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+    </style>
+
+    <!-- Typing Effect JS -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const texts = ["AI/ML Developer", "Web Developer", "Tech Enthusiast"];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+        (function type() {
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            document.querySelector('.typed-text').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+      });
+    </script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="/"><i class="fas fa-rocket"></i> Welcome To My Portfolio</a>
+            </div>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content fade-in">
+        <h1>👋 Hello, I'm Manjit</h1>
+
+        <!-- ✅ Profile Image Shown Here -->
+        <img src="{{ url_for('static', filename='images/manjit.jpg') }}" height="220" width="220" alt="My profile-photo" class="profile-photo">
+
+        <p>I am a <span class="typed-text"></span></p>
+        <p>Welcome to my colorful portfolio website built using Flask and HTML!</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 <strong>Manjit Samantaray</strong> | Built with 💡 & ❤️</p>
+    </footer>
+
+</body>
+</html>
+

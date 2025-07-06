@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ title }} | Manjit Samantaray</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- External CSS -->
+
+
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .site-title {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #00e6b7;
+    }
+
+    .site-subtitle {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .typing-text::after {
+      content: "|";
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .main-content {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .intro-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .intro-section:hover {
+      transform: translateY(-5px);
+    }
+
+    .intro-section h2 {
+      color: #2c5364;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c5364;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .site-title {
+        font-size: 2rem;
+      }
+
+      .site-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <h1 class="site-title">👋 Hello, I'm <span class="highlight">Manjit Samantaray</span></h1>
+    <p class="site-subtitle">A Passionate <span class="typing-text">Web Developer</span></p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    {% block content %}
+    <section class="intro-section">
+      <h2><i class="fas fa-rocket"></i> Welcome to My Portfolio</h2>
+      <p>
+        I design and build modern, responsive websites using <strong>Flask</strong>, <strong>Python</strong>, and the latest web technologies. I’m also exploring the exciting fields of <strong>AI/ML</strong> and automation.
+      </p>
+    </section>
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 <strong>Manjit Samantaray</strong>. Made with 💡 and ☕ 
+      <a href="#" style="color:#00e6b7;"><i class="fab fa-github"></i></a> 
+      <a href="#" style="color:#31d2b2;"><i class="fab fa-linkedin"></i></a>
+    </p>
+  </footer>
+
+  <!-- Typing Effect Script -->
+  <script>
+    const words = ["Web Developer", "AI/ML Explorer", "Tech Enthusiast"];
+    let i = 0, j = 0, currentWord = '', isDeleting = false;
+
+    function type() {
+      currentWord = words[i];
+      let text = currentWord.substring(0, j);
+      document.querySelector('.typing-text').textContent = text;
+
+      if (!isDeleting && j < currentWord.length) {
+        j++;
+        setTimeout(type, 100);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(type, 60);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+        setTimeout(type, 1500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", type);
+  </script>
+
+</body>
+</html>
